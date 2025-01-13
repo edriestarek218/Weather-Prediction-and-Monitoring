@@ -1,0 +1,75 @@
+/* stylelint-disable @stylistic/selector-list-comma-newline-after */
+
+.blog-header-logo {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+  font-size: 2.25rem;
+}
+
+.blog-header-logo:hover {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Playfair Display", Georgia, "Times New Roman", serif/*rtl:Amiri, Georgia, "Times New Roman", serif*/;
+}
+
+.rain-weather-image{
+  filter: blur(2px);
+  background: url('../../../images/rain2.jpg');
+  height: 400px;
+  background-size: cover;
+  background-position: center ;
+
+}
+
+.sunny-weather-image{
+  filter: blur(2px);
+  background: url('../../../images/sunny.jpg');
+  height: 400px;
+  background-size: cover;
+  background-position: center ;
+
+}
+
+.snow-weather-image{
+  filter: blur(2px);
+  background: url('../../../images/snow.jpg');
+  height: 400px;
+  background-size: cover;
+  background-position: center ;
+
+}
+
+.cloudy-weather-image{
+  filter: blur(2px);
+  background: url('../../../images/cloudy.jpg');
+  height: 400px;
+  background-size: cover;
+  background-position: center ;
+
+}
+
+.flex-auto {
+  flex: 0 0 auto;
+}
+
+.h-250 { height: 250px; }
+@media (min-width: 768px) {
+  .h-md-250 { height: 250px; }
+}
+
+/* Pagination */
+.blog-pagination {
+  margin-bottom: 4rem;
+}
+
+/*
+ * Blog posts
+ */
+.blog-post {
+  margin-bottom: 4rem;
+}
+.blog-post-meta {
+  margin-bottom: 1.25rem;
+  color: #727272;
+}

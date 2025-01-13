@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en" data-bs-theme="auto">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.122.0">
+
+    <title>IOT Smart Home</title>
+
+    <link href="{{ url_for('static', filename='Assets/Design/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='Assets/Design/css/blog.css')}}" rel="stylesheet">
+
+    <style>
+      
+      .Rainy-weather-image{
+        filter: blur(2px);
+        background: url('../static/images/rain2.jpg');
+        height: 400px;
+        background-size: cover;
+        background-position: center ;
+
+      }
+
+      .Sunny-weather-image{
+        filter: blur(2px);
+        background: url('../static/images/sunny.jpg');
+        height: 400px;
+        background-size: cover;
+        background-position: center ;
+
+      }
+
+      .Snowy-weather-image{
+        filter: blur(2px);
+        background: url('../static/images/snow.jpg');
+        height: 400px;
+        background-size: cover;
+        background-position: center ;
+
+      }
+
+      .Cloudy-weather-image{
+        filter: blur(2px);
+        background: url('../static/images/cloudy.jpg');
+        height: 400px;
+        background-size: cover;
+        background-position: center ;
+
+      }
+
+    </style>
+  </head>
+  <body>
+
+
+    <main class="container">
+      <div class="p-5 p-md-5 mb-5 rounded text-body-emphasis">
+
+        <div class={{ dht['weather'] + "-weather-image"}}></div>
+        
+        </div>
+        <div class="col-lg-6 px-0" style="position: absolute; top: 30%; left: 15%;">
+          <h1 class="display-4 fst-italic">{{dht['weather']}}</h1>
+          <h4 class="lead my-3">
+            <i>Temprature: {{dht['temp']}} C</i> || <i>Humidity: {{dht['hum']}} %</i>
+          </h4>
+        </div>
+      </div>
+      <div class="row mb-2">
+        <table class="table table-hover">
+          <h2>Leds State</h2>
+          <thead>
+            <tr>
+              <th scope="col">Position</th>
+              <th scope="col">State</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for led in led_data %}
+            <tr>
+              <td>{{ led['position'] }}</td>
+              <td>{{ led['state'] }}</td>
+              <td><form action="/action" method="post">
+                <input type="hidden" name="position" value="{{ led['position'] }}">
+                <input type="hidden" name="action" value="{% if led['state'] == 'on' %}off{% else %}on{% endif %}">
+                <button class="btn {% if led['state'] == 'on' %}btn-danger{% else %}btn-primary{% endif %}" type="submit">{% if led['state'] == 'on' %}Turn Off{% else %}Turn On{% endif %}</button>
+            </form></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+
+
+    </main>
+  </body>
+</html>
